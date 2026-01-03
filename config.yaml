@@ -8,9 +8,9 @@ points:
       columns:
         c1.rows.r1.skip: true
         c2.key.stagger: -u/2
-        c3.key.stagger: u/4
-        c4.key.stagger: u/8
-        c5.key.stagger: -u/8
+        c3.key.stagger: 8.4
+        c4.key.stagger: 6
+        c5.key.stagger: -6
         c6:
           key.stagger: u/2
           rows.r1.skip: true
@@ -20,34 +20,30 @@ points:
         r1:
     thumbfan:
       anchor:
-        - ref: matrix_c5_r3
-          shift: [0,-u]
+        ref: matrix_c5_r3
+        shift: [0,-u]
       columns:
         c4:
         c5.key:
-          splay: -15
-          stagger: -2.7
-          spread: u + 2
+          origin: [-u/2, -u/2 + u/4]
+          splay: -12
         c6.key:
-          splay: -15
-          stagger: -2.7
-          spread: u + 2
-          // tags:
-            - key_1_5u
+          origin: [-u/2, -u/2 + u/4]
+          splay: -12
       rows:
         r0:
     mcu:
       key.tags:
         - helper
       anchor:
-        - ref: matrix_c6_r1
-          shift: [u/2+18/2+1.6,-u/2-33/2]
+        ref: matrix_c6_r1
+        shift: [u/2+18/2+1.6,-u/2-33/2]
     display:
       key.tags:
         - helper
       anchor:
-        - ref: mcu
-          shift: [0,-3.5]
+        ref: mcu
+        shift: [0,-3.5]
     corne_screw_1:
       key.tags:
         - helper
@@ -90,6 +86,24 @@ points:
       anchor: 
         ref: matrix_c6_r3
         shift: [-u/4,-u/2-u/6]
+    corne_screw_7:
+      key.tags:
+        - helper
+        - corne_screw
+      anchor: 
+        aggregate.parts:
+          - ref: matrix_c3_r1
+          - ref: matrix_c3_r2
+        shift: [u/2, 0]
+    corne_screw_8:
+      key.tags:
+        - helper
+        - corne_screw
+      anchor: 
+        aggregate.parts:
+          - ref: matrix_c3_r2
+          - ref: matrix_c3_r3
+        shift: [u/2, 0]
 outlines:
   _keycaps:
     - what: rectangle
@@ -167,8 +181,8 @@ outlines:
       points:
         - ref: matrix_c2_r3
           shift: [u/2,-u/2]
-        - ref: matrix_c3_r3
-          shift: [u/2,-u/2-u/4]
+        - ref: matrix_c2_r3
+          shift: [u/2 + u,-u/2]
         - ref: thumbfan_c4_r0
           shift: [-u/2,-u/2]
           affect: [x,y]
