@@ -71,14 +71,14 @@ points:
         - corne_screw
       anchor: 
         ref: thumbfan_c4_r0
-        shift: [-u/2-u/4, 0]
+        shift: [-u/2-u/4, -u/5]
     corne_screw_5:
       key.tags:
         - helper
         - corne_screw
       anchor:
         ref: thumbfan_c6_r0
-        shift: [0, u/2+u/5]
+        shift: [u/10, u/2+u/5]
     corne_screw_6:
       key.tags:
         - helper
@@ -181,8 +181,6 @@ outlines:
       points:
         - ref: matrix_c2_r3
           shift: [u/2,-u/2]
-        - ref: matrix_c2_r3
-          shift: [u/2 + u,-u/2]
         - ref: thumbfan_c4_r0
           shift: [-u/2,-u/2]
           affect: [x,y]
