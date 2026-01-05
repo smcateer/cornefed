@@ -1,6 +1,18 @@
+meta:
+  engine: 4.2.1
+units:
+  cap_x: 17.5
+  cap_y: 16.5
+  # cap sizes plus a 0.5 mm gap
+  u: 18
+  v: 17
 points:
-  key.tags: 
-    - key
+  key:
+    tags: 
+      - key
+    width: u
+    height: v
+    padding: v
   zones:
     matrix:
       anchor:
@@ -21,14 +33,14 @@ points:
     thumbfan:
       anchor:
         ref: matrix_c5_r3
-        shift: [0,-u]
+        shift: [0,-v]
       columns:
         c4:
         c5.key:
-          origin: [-u/2, -u/2 + u/4]
+          origin: [-u/2, -v/2 + v/8]
           splay: -12
         c6.key:
-          origin: [-u/2, -u/2 + u/4]
+          origin: [-u/2, -v/2 + v/8]
           splay: -12
       rows:
         r0:
@@ -37,55 +49,55 @@ points:
         - helper
       anchor:
         ref: matrix_c6_r1
-        shift: [u/2+18/2+1.6,-u/2-33/2]
+        shift: [u/2 + 18/2 + 1.6, -v/2 - 33/2]
     display:
       key.tags:
         - helper
       anchor:
         ref: mcu
-        shift: [0,-3.5]
+        shift: [0, -3.5]
     corne_screw_1:
       key.tags:
         - helper
         - corne_screw
       anchor: 
         ref: matrix_c1_r2
-        shift: [u/4,u/2+u/6]
+        shift: [u/4, v/2 + v/6]
     corne_screw_2:
       key.tags:
         - helper
         - corne_screw
       anchor: 
         ref: matrix_c6_r2
-        shift: [-u/4,u/2+u/6]
+        shift: [-u/4, v/2 + v/6]
     corne_screw_3:
       key.tags:
         - helper
         - corne_screw
       anchor: 
         ref: matrix_c1_r3
-        shift: [u/4,-u/2-u/6]
+        shift: [u/4, -v/2 - v/6]
     corne_screw_4:
       key.tags:
         - helper
         - corne_screw
       anchor: 
         ref: thumbfan_c4_r0
-        shift: [-u/2-u/4, -u/5]
+        shift: [-u/2-u/4, -v/5]
     corne_screw_5:
       key.tags:
         - helper
         - corne_screw
       anchor:
         ref: thumbfan_c6_r0
-        shift: [u/10, u/2+u/5]
+        shift: [u/10, v/2 + v/5]
     corne_screw_6:
       key.tags:
         - helper
         - corne_screw
       anchor: 
         ref: matrix_c6_r3
-        shift: [-u/4,-u/2-u/6]
+        shift: [-u/4, -v/2 - v/6]
     corne_screw_7:
       key.tags:
         - helper
@@ -108,12 +120,8 @@ outlines:
   _keycaps:
     - what: rectangle
       where: [key]
-      size: 18
-      fillet: 3
-    - what: rectangle
-      where: [key_1_5u]
-      size: [18*1.5,18]
-      fillet: 3
+      size: [cap_x, cap_y]
+      fillet: 2
   _mcu:
     - what: rectangle
       where: [mcu]
@@ -125,25 +133,25 @@ outlines:
       fillet: 0.1
       operation: stack
       adjust:
-        shift: [0,33/2-7.35/2+0.7]
+        shift: [0, 33/2 - 7.35/2 + 0.7]
   _display:
     - what: rectangle
       where: [display]
-      size: [14,36]
+      size: [14, 36]
       fillet: 0.5
     - what: rectangle
       where: [display]
-      size: [12.82,2.66]
+      size: [12.82, 2.66]
       operation: stack
       fillet: 0.1
       adjust:
-        shift: [0,-16.7]
+        shift: [0, -16.7]
     - what: rectangle
       where: [display]
-      size: [10.8,24.6]
+      size: [10.8, 24.6]
       operation: stack
       adjust:
-        shift: [0,-0.75]
+        shift: [0, -0.75]
   _mcu_cluster:
     - what: outline
       name: _mcu
@@ -154,24 +162,24 @@ outlines:
   _keys:
     - what: rectangle
       where: /matrix/
-      size: u
+      size: [u, v]
     - what: polygon
       points:
         - ref: matrix_c3_r1
-          shift: [u/2,-u/2]
+          shift: [u/2, -v/2]
         - ref: thumbfan_c4_r0
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [x]
         - ref: thumbfan_c4_r0
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [y]
         - ref: thumbfan_c5_r0
-          shift: [u/2,u/2]
+          shift: [u/2, v/2]
           affect: [x,y]
         - ref: matrix_c6_r2
-          shift: [u/2,-u]
+          shift: [u/2, -v]
         - ref: matrix_c6_r2
-          shift: [u/2,-u/2]
+          shift: [u/2, -v/2]
   _corne_screw_heads:
     - what: circle
       where: [corne_screw]
@@ -180,57 +188,57 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_c2_r3
-          shift: [u/2,-u/2]
+          shift: [u/2, -v/2]
         - ref: thumbfan_c4_r0
-          shift: [-u/2,-u/2]
+          shift: [-u/2, -v/2]
           affect: [x,y]
         - ref: thumbfan_c5_r0
-          shift: [-u/2,-u/2]
+          shift: [-u/2, -v/2]
           affect: [x,y]
         - ref: thumbfan_c5_r0
-          shift: [u/2,-u/2]
+          shift: [u/2, -v/2]
           affect: [x,y]
         - ref: thumbfan_c6_r0
-          shift: [-u/2,-u/2]
+          shift: [-u/2, -v/2]
           affect: [x,y]
         - ref: thumbfan_c6_r0
-          shift: [u/2,-u/2]
+          shift: [u/2, -v/2]
           affect: [x,y]
         - ref: thumbfan_c6_r0
-          shift: [u/2,u/2]
+          shift: [u/2, v/2]
           affect: [x,y]
         - ref: mcu
-          shift: [18/2,-33/2]
+          shift: [18/2, -33/2]
           affect: [x,y]
         - ref: mcu
-          shift: [18/2,33/2]
+          shift: [18/2, 33/2]
           affect: [x,y]
         - ref: mcu
-          shift: [-18/2,33/2]
+          shift: [-18/2, 33/2]
           affect: [x,y]
         - ref: matrix_c5_r1
-          shift: [u/2,u/2]
+          shift: [u/2, v/2]
           affect: [x,y]
         - ref: matrix_c4_r1
-          shift: [u/2,u/2]
+          shift: [u/2, v/2]
           affect: [x,y]
         - ref: matrix_c4_r1
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [x,y]
         - ref: matrix_c3_r1
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [x,y]
         - ref: matrix_c2_r1
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [x,y]
         - ref: matrix_c1_r2
-          shift: [-u/2,u/2]
+          shift: [-u/2, v/2]
           affect: [x,y]
         - ref: matrix_c1_r3
-          shift: [-u/2,-u/2]
+          shift: [-u/2, -v/2]
           affect: [x,y]
         - ref: matrix_c2_r3
-          shift: [-u/2,-u/2]
+          shift: [-u/2, -v/2]
           affect: [x,y]
   preview:
     - what: outline
@@ -278,7 +286,7 @@ pcbs:
           - /matrix_c1_r[0-4]/
         params: 
           <<: *switches
-          outer_pad_width_back: 2
+          outer_pad_width_back: 1.5
         adjust:
           rotate: 180
       outer_switches_right:
@@ -287,7 +295,7 @@ pcbs:
           - thumbfan_c6_r0
         params: 
           <<: *switches
-          outer_pad_width_front: 2
+          outer_pad_width_front: 1.5
         adjust:
           rotate: 180
       diodes:
