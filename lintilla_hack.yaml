@@ -23,8 +23,7 @@ units:
   hdy: dy / 2
 
   # pcb fillef
-  pf: 0
-
+  pf: 1
 points:
   zones:
     matrix:
@@ -227,7 +226,7 @@ outlines:
   pcb_fill:
     - what: outline
       name: _raw
-      fillet: pf
+      fillet: pf + 2
 
   # Underneath the board, including space for battery wires and solder
   # so that's why it's larger than it needs to be
