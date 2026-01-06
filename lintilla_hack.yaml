@@ -43,7 +43,7 @@ points:
               rowpin: P3
         pinky:
           key:
-            stagger: -dx * 0.33
+            stagger: -dy * 0.33
             colpin: P8
           rows:
             bottom:
@@ -114,12 +114,12 @@ points:
           colpin: P9
           bind: [0, 1, 0, 0]
         primary.rows.spot:
-          splay: -12
+          splay: -14.7
           origin: [-cx / 2, -cy / 2]
           colpin: P7
           bind: [0, 1, 0, 1]
         reachy.rows.spot:
-          splay: -12
+          splay: -14.7
           origin: [-cx / 2, -cy / 2]
           colpin: P5
           bind: [0, 0, 0, 1]
@@ -129,7 +129,7 @@ points:
     mcu:
       anchor:
         ref: matrix_middle_top
-        shift: [26 + 2* dx, -2]
+        shift: [26 + 2* dx, -2 + pf]
         #columns.xiao.rows.ble:
       key:
         tags: [mcu, component]
@@ -138,7 +138,7 @@ points:
     battery:
       anchor:
         ref: matrix_middle_bottom
-        shift: [26 + 2*dx, -1]
+        shift: [26 + 2*dx, -1 + pf]
         #columns.compartment.rows.cutout:
       key:
         tags: [battery, component]
@@ -160,20 +160,20 @@ points:
 
     screw_top_left:
       anchor:
-        ref: matrix_pinky_top
-        shift: [hdx - 3, hdy + 3]
+        ref: matrix_outer_home
+        shift: [0, hdy + 3]
       key:
         tags: [screw, hardware]
     screw_bottom_left:
       anchor:
-        ref: matrix_pinky_bottom
-        shift: [hdx + 3, -hdy + 3]
+        ref: matrix_ring_bottom
+        shift: [0, -hdy - 3]
       key:
         tags: [screw, hardware]
     screw_top_right:
       anchor:
         ref: matrix_inner_home
-        shift: [hdx + 2, hdy - 3]
+        shift: [0, hdy + 3]
       key:
         tags: [screw, hardware]
     screw_bottom_right:
@@ -193,17 +193,17 @@ outlines:
         - ref: matrix_middle_top
           shift: [-hdx - pf, hdy + pf]
         - ref: matrix_ring_top
+          shift: [hdx - pf, hdy + pf]
+        - ref: matrix_ring_top
           shift: [-hdx - pf, hdy + pf]
         - ref: matrix_pinky_top
-          shift: [-hdx - pf, hdy + pf]
-        - ref: matrix_outer_home
-          shift: [-hdx - pf, hdy + pf]
-        - ref: matrix_outer_bottom
-          shift: [-hdx - pf, -hdy - pf]
+          shift: [hdx - pf, hdy + pf]
+        - ref: matrix_pinky_top
+          shift: [-hdx - dx - pf, hdy + pf]
         - ref: matrix_pinky_bottom
-          shift: [-hdx - pf, -hdy - pf]
+          shift: [-hdx -dx - pf, -hdy - pf]
         - ref: matrix_pinky_bottom
-          shift: [hdx + pf, -hdy - pf]
+          shift: [2.5dx - pf, -hdy - pf]
         - ref: thumb_secondary_spot
           shift: [-hdx - pf, -hdy - pf]
         - ref: thumb_primary_spot
@@ -212,21 +212,16 @@ outlines:
           shift: [-hdx - pf, -hdy - pf]
         - ref: thumb_reachy_spot
           shift: [hdx + pf, -hdy - pf]
-        - ref: thumb_reachy_spot
-          shift: [hdx + pf, hdy + pf]
         - ref: battery
           shift: [15, -18]
         - ref: mcu
           shift: [15, 10.5]
         - ref: mcu
           shift: [-15, 10.5]
-    - what: rectangle
-      where: mcu
-      size: [30, 21]
   pcb_fill:
     - what: outline
       name: _raw
-      fillet: pf + 2
+      fillet: pf + 1.5
 
   # Underneath the board, including space for battery wires and solder
   # so that's why it's larger than it needs to be
