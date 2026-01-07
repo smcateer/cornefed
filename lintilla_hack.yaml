@@ -114,12 +114,12 @@ points:
           colpin: P9
           bind: [0, 1, 0, 0]
         primary.rows.spot:
-          splay: -14.7
+          splay: -12
           origin: [-cx / 2, -cy / 2]
           colpin: P7
           bind: [0, 1, 0, 1]
         reachy.rows.spot:
-          splay: -14.7
+          splay: -12
           origin: [-cx / 2, -cy / 2]
           colpin: P5
           bind: [0, 0, 0, 1]
@@ -138,7 +138,7 @@ points:
     battery:
       anchor:
         ref: matrix_middle_bottom
-        shift: [26 + 2*dx, -1 + pf]
+        shift: [26 + 2*dx, -4 + pf]
         #columns.compartment.rows.cutout:
       key:
         tags: [battery, component]
@@ -147,39 +147,39 @@ points:
     reset_button:
       anchor:
         ref: matrix_index_top
-        shift: [-3, cy / 2]
+        shift: [-3, cy / 2 + 5]
       key:
         tags: [reset, component]
 
     power_button:
       anchor:
         ref: matrix_inner_home
-        shift: [-3, cy / 2 + 0.05 + hdx]
+        shift: [-3, cy / 2 + 4.05 + hdx]
       key:
         tags: [power, component]
 
     screw_top_left:
       anchor:
-        ref: matrix_outer_home
-        shift: [0, hdy + 3]
+        ref: matrix_pinky_top
+        shift: [-1.5dx + 3, hdy - 3]
       key:
         tags: [screw, hardware]
     screw_bottom_left:
       anchor:
-        ref: matrix_ring_bottom
-        shift: [0, -hdy - 3]
+        ref: matrix_pinky_bottom
+        shift: [1.5dx, -hdy + 3]
       key:
         tags: [screw, hardware]
     screw_top_right:
       anchor:
-        ref: matrix_inner_home
-        shift: [0, hdy + 3]
+        ref: matrix_middle_top
+        shift: [2.5dx, hdy - 3]
       key:
         tags: [screw, hardware]
     screw_bottom_right:
       anchor:
-        ref: thumb_primary_spot
-        shift: [0, hdy + 3]
+        ref: thumb_reachy_spot
+        shift: [hdx + 1.5, hdy + 3]
       key:
         tags: [screw, hardware]
 
@@ -919,7 +919,7 @@ pcbs:
       xiao_bat_pos_via_far:
         what: via
         where: matrix_inner_home
-        adjust.shift: [hdx -1.5, 1.25]
+        adjust.shift: [hdx -1.5, -11]
         params.net: BAT+
 
       xiao_reset_front:
