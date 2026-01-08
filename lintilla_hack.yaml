@@ -1154,7 +1154,7 @@ pcbs:
 
       order_number:
         what: text
-        where: matrix_outer_bottom
+        where: matrix_ring_bottom
         adjust.shift: [0, -hdy -2]
         params:
           side: F
