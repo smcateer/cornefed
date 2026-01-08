@@ -37,10 +37,11 @@ points:
             colpin: P4
           rows:
             bottom:
-              tags: [key, bumper_left]
+              tags: [key, bumper_bottom_left]
               rowpin: P2
             home:
               rowpin: P3
+              tags: [key, bumper_top_left]
         pinky:
           key:
             stagger: -dy * 0.33
@@ -91,7 +92,7 @@ points:
               rowpin: P10
         inner:
           key:
-            stagger: hdx
+            stagger: 0.4dy
             colpin: P5
           rows:
             bottom:
@@ -99,6 +100,7 @@ points:
               rowpin: P2
             home:
               rowpin: P3
+              tags: [key, bumper_top_right]
 
     # thumb zone
     thumb:
@@ -123,13 +125,13 @@ points:
           origin: [-cx / 2, -cy / 2]
           colpin: P5
           bind: [0, 0, 0, 1]
-          tags: [key, bumper_right]
+          tags: [key, bumper_bottom_right]
 
     # component zones
     mcu:
       anchor:
         ref: matrix_middle_top
-        shift: [26 + 2* dx, -2 + pf]
+        shift: [24 + 2* dx, -2 + pf]
         #columns.xiao.rows.ble:
       key:
         tags: [mcu, component]
@@ -138,7 +140,7 @@ points:
     battery:
       anchor:
         ref: matrix_middle_bottom
-        shift: [26 + 2*dx, -4 + pf]
+        shift: [24 + 2*dx, -4 + pf]
         #columns.compartment.rows.cutout:
       key:
         tags: [battery, component]
@@ -154,20 +156,32 @@ points:
     power_button:
       anchor:
         ref: matrix_inner_home
-        shift: [-3, cy / 2 + 4.05 + hdx]
+        shift: [-3, cy / 2 + 5.05 + 0.6dy]
       key:
         tags: [power, component]
 
     screw_top_left:
       anchor:
         ref: matrix_pinky_top
-        shift: [-1.5dx + 3, hdy - 3]
+        shift: [-hdx - 3, hdy - 3]
       key:
         tags: [screw, hardware]
     screw_bottom_left:
       anchor:
         ref: matrix_pinky_bottom
-        shift: [1.5dx, -hdy + 3]
+        shift: [-hdx - 3, -hdy + 3]
+      key:
+        tags: [screw, hardware]
+    screw_top_middle:
+      anchor:
+        ref: matrix_middle_top
+        shift: [hdx - 3, hdy - 3]
+      key:
+        tags: [screw, hardware]
+    screw_bottom_middle:
+      anchor:
+        ref: matrix_pinky_bottom
+        shift: [2dx, -hdy + 3]
       key:
         tags: [screw, hardware]
     screw_top_right:
@@ -179,7 +193,7 @@ points:
     screw_bottom_right:
       anchor:
         ref: thumb_reachy_spot
-        shift: [hdx + 1.5, hdy + 3]
+        shift: [hdx - 1, hdy - 2]
       key:
         tags: [screw, hardware]
 
@@ -523,21 +537,35 @@ outlines:
     - what: circle
       radius: 3.25
 
-  _bumpers_left:
+  _bumpers_top_left:
     - what: outline
       name: _bumper
-      where: bumper_left
-      adjust.shift: [-5.5, 5.5]
+      where: bumper_top_left
+      adjust.shift: [0, 16.5]
 
-  _bumpers_right:
+  _bumpers_top_right:
     - what: outline
       name: _bumper
-      where: bumper_right
-      adjust.shift: [5.5, 5.5]
+      where: bumper_top_right
+      adjust.shift: [0, 21]
+ 
+  _bumpers_bottom_left:
+    - what: outline
+      name: _bumper
+      where: bumper_bottom_left
+      adjust.shift: [0, -10.5]
+
+  _bumpers_bottom_right:
+    - what: outline
+      name: _bumper
+      where: bumper_bottom_right
+      adjust.shift: [5.5, -5]
 
   _bumpers:
-    - _bumpers_left
-    - _bumpers_right
+    - _bumpers_top_left
+    - _bumpers_top_right
+    - _bumpers_bottom_left
+    - _bumpers_bottom_right
 
   _hex_nut_angle:
     - what: rectangle
@@ -631,8 +659,9 @@ outlines:
       corner: 1
       operation: subtract
     - _switch_outline_holes
+    - -_bumpers
 
-_cases: # remove underscore to create
+cases: # remove underscore to create
   _xiao_light_right:
     - what: outline
       name: _xiao_light_guide_right
@@ -1077,8 +1106,8 @@ pcbs:
 
       lintilla_name:
         what: text
-        where: matrix_middle_top
-        adjust.shift: [-dx - 2, hdy - 3]
+        where: matrix_middle_bottom
+        adjust.shift: [0, -0.7dy]
         params:
           side: F
           text: Lintilla
@@ -1088,8 +1117,8 @@ pcbs:
 
       allitnil_name:
         what: text
-        where: matrix_middle_top
-        adjust.shift: [-dx - 2, hdy - 3]
+        where: matrix_middle_bottom
+        adjust.shift: [0, -0.7dy]
         params:
           side: B
           text: Allitnil
@@ -1107,7 +1136,7 @@ pcbs:
         what: text
         where: battery
         adjust:
-          shift: [13.5, 10]
+          shift: [13.5, 12]
           rotate: 90
         params:
           text: *repo
@@ -1125,8 +1154,8 @@ pcbs:
 
       order_number:
         what: text
-        where: matrix_pinky_bottom
-        adjust.shift: [0, -hdy + 1]
+        where: matrix_outer_bottom
+        adjust.shift: [0, -hdy -2]
         params:
           side: F
           text: *order_text
